@@ -18,18 +18,14 @@ public class OpenBrowser {
         String actualTitle = driver.getTitle();
         System.out.println("Title Of Website: " + actualTitle);
 
-        //        handling cookie pop up
-        try {
-            WebElement cookieAcceptButton = driver.findElement(By.xpath("//button[contains(@class, 'button ui-cookie-consent__accept-button')]"));
-            cookieAcceptButton.click();
-            Set<Cookie> cookies = driver.manage().getCookies();
-            for (Cookie cookie : cookies) {
-                System.out.println("Name: " + cookie.getName());
-                System.out.println("Value: " + cookie.getValue());
-            }
+    //        handling cookie pop up
+        WebElement cookieAcceptButton = driver.findElement(By.xpath("//button[contains(@class, 'button ui-cookie-consent__accept-button')]"));
+        cookieAcceptButton.click();
+        Set<Cookie> cookies = driver.manage().getCookies();
+        for (Cookie cookie : cookies) {
+            System.out.println("Name: " + cookie.getName());
+            System.out.println("Value: " + cookie.getValue());
             System.out.println("Cookies accepted!");
-        } catch (Exception e) {
-            System.out.println("Could not find cookie button.");
         }
     }
 
@@ -51,9 +47,9 @@ public class OpenBrowser {
         commissionFeeField.sendKeys("0.5");
 
         Select advanceRateSelect = new Select(advanceRateDropdown);
-        Select paymentTermSelect = new Select(paymentTermDropdown);
-
         advanceRateSelect.selectByValue("85");
+
+        Select paymentTermSelect = new Select(paymentTermDropdown);
         paymentTermSelect.selectByValue("120");
 
         Thread.sleep(5000);
