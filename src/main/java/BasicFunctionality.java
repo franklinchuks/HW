@@ -16,16 +16,10 @@ public class BasicFunctionality {
         driver.get("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
         String actualTitle = driver.getTitle();
         System.out.println("Title Of Website: " + actualTitle);
-
-    //        handling cookie pop up
         WebElement cookieAcceptButton = driver.findElement(By.xpath("//button[contains(@class, 'button ui-cookie-consent__accept-button')]"));
         cookieAcceptButton.click();
-        Set<Cookie> cookies = driver.manage().getCookies();
-        for (Cookie cookie : cookies) {
-            System.out.println("Name: " + cookie.getName());
-            System.out.println("Value: " + cookie.getValue());
-            System.out.println("Cookies accepted!");
-        }
+
+
     }
 
     @Test(dependsOnMethods = {"openBrowser"})
