@@ -1,7 +1,7 @@
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
@@ -10,9 +10,19 @@ public class InputValidation {
 
     WebDriver driver;
 
+    public void initializeWebDriver() {
+        System.setProperty("web-driver.chrome.driver", "../chromedriver");
+        driver = new ChromeDriver();
+    }
+
     @Test(priority = 2)
     public void browserInputs() throws InterruptedException {
+        initializeWebDriver();
+        System.out.println("Inserting values...");
+        Thread.sleep(3000);
+
         WebElement invoiceAmountField = driver.findElement(By.name("calc_d5"));
+        System.out.println("Good till here...");
         WebElement interestRateField = driver.findElement(By.name("calc_d7"));
         WebElement commissionFeeField = driver.findElement(By.name("calc_d9"));
         WebElement advanceRateDropdown = driver.findElement(By.name("calc_d6"));
