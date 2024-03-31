@@ -29,7 +29,6 @@ public class OpenBrowser {
         }
     }
 
-
     @Test(dependsOnMethods = {"openBrowser"})
     public void browserInputs() throws InterruptedException {
         WebElement invoiceAmountField = driver.findElement(By.name("calc_d5"));
@@ -52,7 +51,12 @@ public class OpenBrowser {
         Select paymentTermSelect = new Select(paymentTermDropdown);
         paymentTermSelect.selectByValue("120");
 
-        Thread.sleep(5000);
+        Thread.sleep(3000);
+
+//        click calculate button
+        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
+
+        Thread.sleep(3000);
     }
     @AfterTest
     public void closeBrowser() {
