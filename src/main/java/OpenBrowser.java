@@ -3,6 +3,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class OpenBrowser {
@@ -15,7 +16,22 @@ public class OpenBrowser {
         driver.get("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
         String actualTitle = driver.getTitle();
         System.out.println("Title Of Website: " + actualTitle);
+
+        //        handling cookie pop up
+        try {
+            WebElement cookieAcceptButton = driver.findElement(By.xpath("//button[contains(@class, 'button ui-cookie-consent__accept-button')]"));
+            cookieAcceptButton.click();
+            Set<Cookie> cookies = driver.manage().getCookies();
+            for (Cookie cookie : cookies) {
+                System.out.println("Name: " + cookie.getName());
+                System.out.println("Value: " + cookie.getValue());
+            }
+            System.out.println("Cookies accepted!");
+        } catch (Exception e) {
+            System.out.println("Could not find cookie button.");
+        }
     }
+
 
     @Test(dependsOnMethods = {"openBrowser"})
     public void browserInputs() throws InterruptedException {
