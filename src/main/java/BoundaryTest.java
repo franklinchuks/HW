@@ -14,8 +14,6 @@ public class BoundaryTest {
     public void setUp() {
         driver = Utils.getWebDriver();
         driver.get("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
-        WebElement cookieAcceptButton = driver.findElement(By.xpath("//button[contains(@class, 'button ui-cookie-consent__accept-button')]"));
-        cookieAcceptButton.click();
 
         invoiceAmountField = driver.findElement(By.name("calc_d5"));
         interestRateField = driver.findElement(By.name("calc_d7"));
@@ -27,7 +25,7 @@ public class BoundaryTest {
         paymentTermSelect = new Select(paymentTermDropdown);
     }
 
-    @Test(priority=1)
+    @Test(priority=7)
     public void minBoundaryTest() throws InterruptedException {
         invoiceAmountField.clear();
         interestRateField.clear();
@@ -43,7 +41,7 @@ public class BoundaryTest {
         Thread.sleep(5000);
     }
 
-    @Test(priority=2)
+    @Test(priority=8)
     public void maxBoundaryTest() throws InterruptedException {
         invoiceAmountField.clear();
         interestRateField.clear();

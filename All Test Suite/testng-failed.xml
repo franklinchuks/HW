@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="Failed suite [All Test Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Second Test(failed)">
+  <test thread-count="5" name="First Test(failed)">
     <classes>
-      <class name="InputValidation">
+      <class name="BasicFunctionality">
         <methods>
+          <include name="basicFunctionalityTest"/>
           <include name="setUp"/>
-          <include name="thirdInputValidationTest"/>
-          <include name="tearDown"/>
-          <include name="firstInputValidationTest"/>
-          <include name="secondInputValidationTest"/>
+          <include name="buttonFunctionalityTest"/>
         </methods>
-      </class> <!-- InputValidation -->
+      </class> <!-- BasicFunctionality -->
     </classes>
-  </test> <!-- Second Test(failed) -->
+  </test> <!-- First Test(failed) -->
   <test thread-count="5" name="Third Test Calculation(failed)">
     <classes>
       <class name="CalculationAccuracy">
         <methods>
           <include name="setUp"/>
-          <include name="tearDown"/>
           <include name="calculationAccuracyTest"/>
         </methods>
       </class> <!-- CalculationAccuracy -->

@@ -14,8 +14,6 @@ public class CalculationAccuracy {
     public void setUp() {
         driver = Utils.getWebDriver();
         driver.get("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
-        WebElement cookieAcceptButton = driver.findElement(By.xpath("//button[contains(@class, 'button ui-cookie-consent__accept-button')]"));
-        cookieAcceptButton.click();
 
         invoiceAmountField = driver.findElement(By.name("calc_d5"));
         interestRateField = driver.findElement(By.name("calc_d7"));
@@ -30,7 +28,7 @@ public class CalculationAccuracy {
         paymentTermSelect = new Select(paymentTermDropdown);
     }
 
-    @Test
+    @Test(priority=6)
     public void calculationAccuracyTest() throws InterruptedException {
         invoiceAmountField.sendKeys("700");
         interestRateField.sendKeys("4");
@@ -63,8 +61,4 @@ public class CalculationAccuracy {
         }
     }
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-    }
 }

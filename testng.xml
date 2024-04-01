@@ -6,7 +6,7 @@
             <class name="BasicFunctionality">
                 <methods>
                     <include name="basicFunctionalityTest"/>
-<!--                    <include name="buttonFunctionalityTest"/>-->
+                    <include name="buttonFunctionalityTest"/>
                 </methods>
             </class>
         </classes>

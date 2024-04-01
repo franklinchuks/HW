@@ -14,8 +14,6 @@ public class InputValidation {
     public void setUp() {
         driver = Utils.getWebDriver();
         driver.get("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
-        WebElement cookieAcceptButton = driver.findElement(By.xpath("//button[contains(@class, 'button ui-cookie-consent__accept-button')]"));
-        cookieAcceptButton.click();
 
         invoiceAmountField = driver.findElement(By.name("calc_d5"));
         interestRateField = driver.findElement(By.name("calc_d7"));
@@ -28,7 +26,7 @@ public class InputValidation {
     }
 
 
-    @Test(priority=2)
+    @Test(priority=3)
     public void firstInputValidationTest() throws InterruptedException {
         invoiceAmountField.clear();
         interestRateField.clear();
@@ -63,7 +61,7 @@ public class InputValidation {
     }
 
 
-    @Test(priority=2)
+    @Test(priority=4)
     public void secondInputValidationTest() throws InterruptedException {
         invoiceAmountField.clear();
         interestRateField.clear();
@@ -98,7 +96,7 @@ public class InputValidation {
     }
 
 
-    @Test(priority=3)
+    @Test(priority=5)
     public void thirdInputValidationTest() throws InterruptedException {
         invoiceAmountField.clear();
         interestRateField.clear();
@@ -133,8 +131,4 @@ public class InputValidation {
 
     }
 
-    @AfterClass
-    public void tearDown() {
-        driver.quit();
-    }
 }
