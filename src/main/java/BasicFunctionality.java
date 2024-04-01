@@ -1,20 +1,19 @@
-import org.openqa.selenium.*;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.*;
 
 public class BasicFunctionality {
-    private WebDriver driver;
 
     @BeforeClass
     public void setUp() {
-        driver = Utils.getWebDriver();
-        driver.get("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
-        WebElement cookieAcceptButton = driver.findElement(By.xpath("//button[contains(@class, 'button ui-cookie-consent__accept-button')]"));
-        cookieAcceptButton.click();
+        Utils.openBrowser("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
+        $("button.ui-cookie-consent__accept-button").click();
     }
 
-    @Test(priority=1)
+    @Test(priority = 1)
     public void basicFunctionalityTest() {
-        String actualTitle = driver.getTitle();
+        String actualTitle = title();
         String expectedTitle = "Swedbank factoring service - Swedbank";
         if (actualTitle.equals(expectedTitle)) {
             System.out.println("Page opened successfully.");
@@ -23,11 +22,9 @@ public class BasicFunctionality {
         }
     }
 
-    @Test(priority=2)
+    @Test(priority = 2)
     public void buttonFunctionalityTest() throws InterruptedException {
-//        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
+        $("button.-guiding").click();
         System.out.println("Button clicked successfully.");
     }
-
-
 }
