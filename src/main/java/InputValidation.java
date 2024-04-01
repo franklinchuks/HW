@@ -40,13 +40,6 @@ public class InputValidation {
         driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
         Thread.sleep(5000);
 
-        WebElement errorMessage = driver.findElement(By.id("errorMessage"));
-        if (errorMessage) {
-            String errorText = errorMessage.getText();
-            System.out.println("Error Message: " + errorText);
-        } else {
-            System.out.println("No Error Message");
-        }
     }
 
     @Test(priority=2)
@@ -54,22 +47,53 @@ public class InputValidation {
         invoiceAmountField.clear();
         interestRateField.clear();
         commissionFeeField.clear();
-        invoiceAmountField.sendKeys("5");
-        interestRateField.sendKeys("2");
-        commissionFeeField.sendKeys("0.5");
-        advanceRateSelect.selectByValue("90");
-        paymentTermSelect.selectByValue("60");
-        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
-        Thread.sleep(5000);
 
-        WebElement errorMessage = driver.findElement(By.id("errorMessage"));
-        if (errorMessage) {
-            String errorText = errorMessage.getText();
+        invoiceAmountField.sendKeys("-1");
+        WebElement errorMessage1 = driver.findElement(By.id("D5"));
+        if (errorMessage1.isDisplayed()) {
+            String errorText = errorMessage1.getText();
+            System.out.println("Error Message: " + errorText);
+        } else {
+            System.out.println("No Error Message");
+        }
+
+        interestRateField.sendKeys("-1");
+        WebElement errorMessage2 = driver.findElement(By.id("D7"));
+        if (errorMessage2.isDisplayed()) {
+            String errorText = errorMessage2.getText();
+            System.out.println("Error Message: " + errorText);
+        } else {
+            System.out.println("No Error Message");
+        }
+
+        commissionFeeField.sendKeys("-1");
+        WebElement errorMessage3 = driver.findElement(By.id("D8"));
+        if (errorMessage3.isDisplayed()) {
+            String errorText = errorMessage3.getText();
+            System.out.println("Error Message: " + errorText);
+        } else {
+            System.out.println("No Error Message");
+        }
+
+        advanceRateSelect.selectByValue("-1");
+        WebElement errorMessage4 = driver.findElement(By.id("D6"));
+        if (errorMessage4.isDisplayed()) {
+            String errorText = errorMessage4.getText();
+            System.out.println("Error Message: " + errorText);
+        } else {
+            System.out.println("No Error Message");
+        }
+
+        paymentTermSelect.selectByValue("-1");
+        WebElement errorMessage5 = driver.findElement(By.id("D9"));
+        if (errorMessage5.isDisplayed()) {
+            String errorText = errorMessage5.getText();
             System.out.println("Error Message: " + errorText);
         } else {
             System.out.println("No Error Message");
         }
     }
+
 
     @Test(priority=3)
     public void thirdInputValidationTest() throws InterruptedException {
@@ -84,13 +108,6 @@ public class InputValidation {
         driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
         Thread.sleep(5000);
 
-        WebElement errorMessage = driver.findElement(By.id("errorMessage"));
-        if (errorMessage) {
-            String errorText = errorMessage.getText();
-            System.out.println("Error Message: " + errorText);
-        } else {
-            System.out.println("No Error Message");
-        }
     }
 
     @AfterClass

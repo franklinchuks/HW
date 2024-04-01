@@ -3,9 +3,9 @@
 <suite name="All Test Suite">
     <test name="First Test">
         <classes>
-            <class name="CalculationAccuracy">
+            <class name="InputValidation">
                 <methods>
-                    <include name="calculationAccuracyTest"/>
+                    <include name="secondInputValidationTest"/>
                 </methods>
             </class>
         </classes>

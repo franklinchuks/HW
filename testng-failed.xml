@@ -3,13 +3,13 @@
 <suite name="Failed suite [All Test Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="First Test(failed)">
     <classes>
-      <class name="BasicFunctionality">
+      <class name="InputValidation">
         <methods>
-          <include name="tearDown"/>
           <include name="setUp"/>
-          <include name="buttonFunctionalityTest"/>
+          <include name="tearDown"/>
+          <include name="secondInputValidationTest"/>
         </methods>
-      </class> <!-- BasicFunctionality -->
+      </class> <!-- InputValidation -->
     </classes>
   </test> <!-- First Test(failed) -->
 </suite> <!-- Failed suite [All Test Suite] -->

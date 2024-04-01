@@ -11,6 +11,7 @@ public class BasicFunctionality {
         WebElement cookieAcceptButton = driver.findElement(By.xpath("//button[contains(@class, 'button ui-cookie-consent__accept-button')]"));
         cookieAcceptButton.click();
     }
+
     @Test
     public void basicFunctionalityTest() {
         String actualTitle = driver.getTitle();
@@ -21,6 +22,7 @@ public class BasicFunctionality {
             System.out.println("Page did not open successfully.");
         }
     }
+
     @Test
     public void buttonFunctionalityTest() throws InterruptedException {
         driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
