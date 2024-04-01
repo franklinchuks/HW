@@ -22,8 +22,8 @@ public class InputValidation {
 
 //        using border-color to check if error was shown
         String D5 = $("#D5").getCssValue("border-color");
-        String D7 = $("#D5").getCssValue("border-color");
-        String D9 = $("#D5").getCssValue("border-color");
+        String D7 = $("#D7").getCssValue("border-color");
+        String D9 = $("#D9").getCssValue("border-color");
         if (D5.equalsIgnoreCase("rgb(197, 19, 28)") || D7.equalsIgnoreCase("rgb(197, 19, 28)") || D9.equalsIgnoreCase("rgb(197, 19, 28)")) {
             System.out.println("Error shown for non-numeric inputs");
         } else {
@@ -40,8 +40,8 @@ public class InputValidation {
 
 //        using border-color to check if error was shown
         String D5 = $("#D5").getCssValue("border-color");
-        String D7 = $("#D5").getCssValue("border-color");
-        String D9 = $("#D5").getCssValue("border-color");
+        String D7 = $("#D7").getCssValue("border-color");
+        String D9 = $("#D9").getCssValue("border-color");
         if (D5.equalsIgnoreCase("rgb(197, 19, 28)") || D7.equalsIgnoreCase("rgb(197, 19, 28)") || D9.equalsIgnoreCase("rgb(197, 19, 28)")) {
             System.out.println("Error shown for negative inputs");
         } else {
@@ -59,8 +59,8 @@ public class InputValidation {
 
 //        using border-color to check if error was shown
         String D5 = $("#D5").getCssValue("border-color");
-        String D7 = $("#D5").getCssValue("border-color");
-        String D9 = $("#D5").getCssValue("border-color");
+        String D7 = $("#D7").getCssValue("border-color");
+        String D9 = $("#D9").getCssValue("border-color");
         if (D5.equalsIgnoreCase("rgb(197, 19, 28)") || D7.equalsIgnoreCase("rgb(197, 19, 28)") || D9.equalsIgnoreCase("rgb(197, 19, 28)")) {
             System.out.println("Error shown for empty fields");
         } else {
