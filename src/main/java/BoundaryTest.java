@@ -23,44 +23,44 @@ public class BoundaryTest {
         WebElement advanceRateDropdown = driver.findElement(By.name("calc_d6"));
         WebElement paymentTermDropdown = driver.findElement(By.name("calc_d8"));
 
-        invoiceAmountField.clear();
-        interestRateField.clear();
-        commissionFeeField.clear();
         advanceRateSelect = new Select(advanceRateDropdown);
         paymentTermSelect = new Select(paymentTermDropdown);
     }
 
-    @Test
+    @Test(priority=1)
     public void minBoundaryTest() throws InterruptedException {
+        invoiceAmountField.clear();
+        interestRateField.clear();
+        commissionFeeField.clear();
+
         invoiceAmountField.sendKeys("1");
-        interestRateField.sendKeys("1");
-        commissionFeeField.sendKeys("0.1");
+        interestRateField.sendKeys("0");
+        commissionFeeField.sendKeys("0");
         advanceRateSelect.selectByValue("75");
         paymentTermSelect.selectByValue("30");
+
+        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
+        Thread.sleep(5000);
     }
 
-    @Test
+    @Test(priority=2)
     public void maxBoundaryTest() throws InterruptedException {
-        invoiceAmountField.sendKeys("1000000");
+        invoiceAmountField.clear();
+        interestRateField.clear();
+        commissionFeeField.clear();
+
+        invoiceAmountField.sendKeys("100000000");
         interestRateField.sendKeys("20");
-        commissionFeeField.sendKeys("10");
+        commissionFeeField.sendKeys("100");
         advanceRateSelect.selectByValue("90");
         paymentTermSelect.selectByValue("120");
+
+        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
+        Thread.sleep(5000);
     }
 
     @AfterClass
     public void tearDown() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         driver.quit();
     }
 }

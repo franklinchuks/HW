@@ -32,26 +32,18 @@ public class CalculationAccuracy {
 
     @Test
     public void calculationAccuracyTest() throws InterruptedException {
-        invoiceAmountField.sendKeys("7");
+        invoiceAmountField.sendKeys("700");
         interestRateField.sendKeys("4");
-        commissionFeeField.sendKeys("0.5");
+        commissionFeeField.sendKeys("0.3");
         advanceRateSelect.selectByValue("85");
-        paymentTermSelect.selectByValue("120");
+        paymentTermSelect.selectByValue("30");
+
+        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
+        Thread.sleep(5000);
     }
 
     @AfterClass
     public void tearDown() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         driver.quit();
     }
 }

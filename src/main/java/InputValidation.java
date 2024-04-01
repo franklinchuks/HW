@@ -23,53 +23,60 @@ public class InputValidation {
         WebElement advanceRateDropdown = driver.findElement(By.name("calc_d6"));
         WebElement paymentTermDropdown = driver.findElement(By.name("calc_d8"));
 
-        invoiceAmountField.clear();
-        interestRateField.clear();
-        commissionFeeField.clear();
         advanceRateSelect = new Select(advanceRateDropdown);
         paymentTermSelect = new Select(paymentTermDropdown);
     }
 
-    @Test
+    @Test(priority=1)
     public void firstInputValidationTest() throws InterruptedException {
+        invoiceAmountField.clear();
+        interestRateField.clear();
+        commissionFeeField.clear();
+
         invoiceAmountField.sendKeys("7");
         interestRateField.sendKeys("4");
         commissionFeeField.sendKeys("0.5");
         advanceRateSelect.selectByValue("85");
         paymentTermSelect.selectByValue("120");
+
+        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
+        Thread.sleep(5000);
     }
 
-    @Test
+    @Test(priority=2)
     public void secondInputValidationTest() throws InterruptedException {
+        invoiceAmountField.clear();
+        interestRateField.clear();
+        commissionFeeField.clear();
+
         invoiceAmountField.sendKeys("5");
         interestRateField.sendKeys("2");
         commissionFeeField.sendKeys("0.5");
         advanceRateSelect.selectByValue("90");
         paymentTermSelect.selectByValue("60");
+
+        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
+        Thread.sleep(5000);
     }
 
-    @Test
+    @Test(priority=3)
     public void thirdInputValidationTest() throws InterruptedException {
+        invoiceAmountField.clear();
+        interestRateField.clear();
+        commissionFeeField.clear();
+
         invoiceAmountField.sendKeys("3");
         interestRateField.sendKeys("2");
         commissionFeeField.sendKeys("0.1");
         advanceRateSelect.selectByValue("75");
         paymentTermSelect.selectByValue("30");
+
+        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
+        Thread.sleep(5000);
     }
 
     @AfterClass
     public void tearDown() {
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         driver.quit();
     }
 }

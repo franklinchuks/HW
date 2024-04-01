@@ -21,15 +21,12 @@ public class BasicFunctionality {
             System.out.println("Page did not open successfully.");
         }
     }
-
-    public void buttonFunctionalityTest() {
+    @Test
+    public void buttonFunctionalityTest() throws InterruptedException {
         driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
-        if (actualTitle.equals(expectedTitle)) {
-            System.out.println("Page opened successfully.");
-        } else {
-            System.out.println("Page did not open successfully.");
-        }
+        System.out.println("Button clicked successfully.");
     }
+
 
     @AfterClass
     public void tearDown() {

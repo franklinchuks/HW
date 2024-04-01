@@ -3,11 +3,10 @@
 <suite name="All Test Suite">
     <test name="First Test">
         <classes>
-            <class name="InputValidation">
+            <class name="BoundaryTest">
                 <methods>
-                    <include name="firstInputValidationTest"/>
-                    <include name="secondInputValidationTest"/>
-                    <include name="thirdInputValidationTest"/>
+                    <include name="minBoundaryTest"/>
+                    <include name="maxBoundaryTest"/>
                 </methods>
             </class>
         </classes>
