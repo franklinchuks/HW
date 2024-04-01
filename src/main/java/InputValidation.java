@@ -1,134 +1,72 @@
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.*;
 
 public class InputValidation {
-    private WebDriver driver;
-    private WebElement invoiceAmountField;
-    private WebElement interestRateField;
-    private WebElement commissionFeeField;
-    private Select advanceRateSelect;
-    private Select paymentTermSelect;
 
     @BeforeClass
     public void setUp() {
-        driver = Utils.getWebDriver();
-        driver.get("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
-
-        invoiceAmountField = driver.findElement(By.name("calc_d5"));
-        interestRateField = driver.findElement(By.name("calc_d7"));
-        commissionFeeField = driver.findElement(By.name("calc_d9"));
-        WebElement advanceRateDropdown = driver.findElement(By.name("calc_d6"));
-        WebElement paymentTermDropdown = driver.findElement(By.name("calc_d8"));
-
-        advanceRateSelect = new Select(advanceRateDropdown);
-        paymentTermSelect = new Select(paymentTermDropdown);
+        Utils.openBrowser("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
+        $("button.ui-cookie-consent__accept-button").click();
     }
 
+    @Test(priority = 3)
+    public void firstInputValidationTest() {
+        $("#D5").setValue("a");
+        $("#D7").setValue("a");
+        $("#D9").setValue("a");
 
-    @Test(priority=3)
-    public void firstInputValidationTest() throws InterruptedException {
-        invoiceAmountField.clear();
-        interestRateField.clear();
-        commissionFeeField.clear();
+        String D5 = $("#D5").getCssValue("border-color");
+        String D7 = $("#D5").getCssValue("border-color");
+        String D9 = $("#D5").getCssValue("border-color");
 
-        invoiceAmountField.sendKeys("a");
-        interestRateField.clear();
-        WebElement errorMessage1 = driver.findElement(By.id("D5"));
-        if (errorMessage1.isDisplayed()) {
-            System.out.println("Error message was thrown for non-numeric entries");
+        if (D5.equalsIgnoreCase("rgb(197, 19, 28)") || D7.equalsIgnoreCase("rgb(197, 19, 28)") || D9.equalsIgnoreCase("rgb(197, 19, 28)")) {
+            System.out.println("Error shown for non-numeric inputs");
         } else {
-            System.out.println("No message was thrown for non-numeric entries");
+            System.out.println("No error shown for non-numeric inputs");
         }
 
-        interestRateField.sendKeys("a");
-        commissionFeeField.clear();
-        WebElement errorMessage2 = driver.findElement(By.id("D7"));
-        if (errorMessage2.isDisplayed()) {
-            System.out.println("Error message was thrown for non-numeric entries");
-        } else {
-            System.out.println("No message was thrown for non-numeric entries");
-        }
-
-        commissionFeeField.sendKeys("a");
-        invoiceAmountField.clear();
-        WebElement errorMessage3 = driver.findElement(By.id("D8"));
-        if (errorMessage3.isDisplayed()) {
-            System.out.println("Error message was thrown for non-numeric entries");
-        } else {
-            System.out.println("No message was thrown for non-numeric entries");
-        }
-    }
-
-
-    @Test(priority=4)
-    public void secondInputValidationTest() throws InterruptedException {
-        invoiceAmountField.clear();
-        interestRateField.clear();
-        commissionFeeField.clear();
-
-        invoiceAmountField.sendKeys("-1");
-        interestRateField.clear();
-        WebElement errorMessage1 = driver.findElement(By.id("D5"));
-        if (errorMessage1.isDisplayed()) {
-            System.out.println("Error message was thrown for negative entries");
-        } else {
-            System.out.println("No message was thrown for negative entries");
-        }
-
-        interestRateField.sendKeys("-1");
-        commissionFeeField.clear();
-        WebElement errorMessage2 = driver.findElement(By.id("D7"));
-        if (errorMessage2.isDisplayed()) {
-            System.out.println("Error message was thrown for negative entries");
-        } else {
-            System.out.println("No message was thrown for negative entries");
-        }
-
-        commissionFeeField.sendKeys("-1");
-        invoiceAmountField.clear();
-        WebElement errorMessage3 = driver.findElement(By.id("D8"));
-        if (errorMessage3.isDisplayed()) {
-            System.out.println("Error message was thrown for negative entries");
-        } else {
-            System.out.println("No message was thrown for negative entries");
-        }
-    }
-
-
-    @Test(priority=5)
-    public void thirdInputValidationTest() throws InterruptedException {
-        invoiceAmountField.clear();
-        interestRateField.clear();
-        commissionFeeField.clear();
-
-        invoiceAmountField.clear();
-        interestRateField.clear();
-        WebElement errorMessage1 = driver.findElement(By.id("D5"));
-        if (errorMessage1.isDisplayed()) {
-            System.out.println("Error message was thrown for empty entries");
-        } else {
-            System.out.println("No message was thrown");
-        }
-
-        interestRateField.clear();
-        commissionFeeField.clear();
-        WebElement errorMessage2 = driver.findElement(By.id("D7"));
-        if (errorMessage2.isDisplayed()) {
-            System.out.println("Error message was thrown for empty entries");
-        } else {
-            System.out.println("No message was thrown for empty entries");
-        }
-
-        commissionFeeField.clear();
-        invoiceAmountField.clear();
-        WebElement errorMessage3 = driver.findElement(By.id("D8"));
-        if (errorMessage3.isDisplayed()) {
-            System.out.println("Error message was thrown for empty entries");
-        } else {
-            System.out.println("No message was thrown for empty entries");
-        }
 
     }
 
+    @Test(priority = 4)
+    public void secondInputValidationTest() {
+        $("#D5").setValue("-1");
+        $("#D7").setValue("-1");
+        $("#D9").setValue("-1");
+
+        String D5 = $("#D5").getCssValue("border-color");
+        String D7 = $("#D5").getCssValue("border-color");
+        String D9 = $("#D5").getCssValue("border-color");
+
+        if (D5.equalsIgnoreCase("rgb(197, 19, 28)") || D7.equalsIgnoreCase("rgb(197, 19, 28)") || D9.equalsIgnoreCase("rgb(197, 19, 28)")) {
+            System.out.println("Error shown for negative inputs");
+        } else {
+            System.out.println("No error shown for negative inputs");
+        }
+
+
+    }
+
+    @Test(priority = 5)
+    public void thirdInputValidationTest() {
+        $("#D5").setValue("");
+        $("#D7").setValue("");
+        $("#D9").setValue("");
+        $("#D7").clear();
+
+        String D5 = $("#D5").getCssValue("border-color");
+        String D7 = $("#D5").getCssValue("border-color");
+        String D9 = $("#D5").getCssValue("border-color");
+
+        if (D5.equalsIgnoreCase("rgb(197, 19, 28)") || D7.equalsIgnoreCase("rgb(197, 19, 28)") || D9.equalsIgnoreCase("rgb(197, 19, 28)")) {
+            System.out.println("Error shown for empty fields");
+        } else {
+            System.out.println("No error shown for empty fields");
+        }
+
+    }
 }
