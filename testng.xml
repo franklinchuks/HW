@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test verbose="2" preserve-order="true" name="/Users/a1/IdeaProjects/HomeWork">
+    <test name="First Test">
         <classes>
-            <class name="BasicFunctionality"/>
+            <class name="InputValidation">
+                <methods>
+                    <include name="inputValidation"/>
+                </methods>
+            </class>
         </classes>
     </test>
+<!--    <test name="Second Test">-->
+<!--        <classes>-->
+<!--            <class name="Utils">-->
+<!--                <methods>-->
+<!--                    <include name="openBrowser"/>-->
+<!--                    <include name="browserInputs"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
