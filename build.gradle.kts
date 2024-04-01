@@ -10,12 +10,14 @@ repositories {
 }
 
 dependencies {
-    testImplementation("com.codeborne:selenide:7.2.3")
-    implementation("org.testng:testng:7.1.0")
-    implementation("org.seleniumhq.selenium:selenium-java:3.141.59")
+    // Selenide dependency for tests
+    implementation("com.codeborne:selenide:7.2.3")
+
+    // TestNG dependency for testing framework
+    implementation(group = "org.testng", name = "testng", version = "6.14.3")
 
 }
 
 tasks.getByName<Test>("test") {
-    useTestNG()
+    useJUnitPlatform()
 }

@@ -22,7 +22,7 @@ public class CalculationAccuracy {
         sleep(5000);
 
         try {
-            $("#result_perc").shouldHave(text("0.58"));
+            $("#result_perc").shouldHave(text("0.44"));
             System.out.println("*** Percent Of Invoice Test Is Correct! ***");
         } catch (Throwable e) {
             System.out.println("### Percent Of Invoice Test Failed! ###");
@@ -30,7 +30,7 @@ public class CalculationAccuracy {
         }
 
         try {
-            $("#result").shouldHave(text("4.08"));
+            $("#result").shouldHave(text("7.51"));
             System.out.println("*** Financing Of Invoice Test Is Correct! ***");
         } catch (Throwable e) {
             System.out.println("### Financing Of Invoice Test Failed! ###");

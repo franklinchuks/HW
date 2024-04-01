@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
-    <test name="First Test">
+    <test name="First Test - Basic Functionalities">
         <classes>
             <class name="BasicFunctionality">
                 <methods>
@@ -11,7 +11,7 @@
             </class>
         </classes>
     </test>
-    <test name="Second Test">
+    <test name="Second Test - Input Validation">
         <classes>
             <class name="InputValidation">
                 <methods>
@@ -22,7 +22,7 @@
             </class>
         </classes>
     </test>
-    <test name="Third Test Calculation">
+    <test name="Third Test - Calculation Accuracy">
         <classes>
             <class name="CalculationAccuracy">
                 <methods>
@@ -31,7 +31,7 @@
             </class>
         </classes>
     </test>
-    <test name="Fourth Test Boundary">
+    <test name="Fourth Test - Boundary Test">
         <classes>
             <class name="BoundaryTest">
                 <methods>

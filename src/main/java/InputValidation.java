@@ -27,8 +27,6 @@ public class InputValidation {
         } else {
             System.out.println("No error shown for non-numeric inputs");
         }
-
-
     }
 
     @Test(priority = 4)
@@ -46,8 +44,6 @@ public class InputValidation {
         } else {
             System.out.println("No error shown for negative inputs");
         }
-
-
     }
 
     @Test(priority = 5)
@@ -66,6 +62,5 @@ public class InputValidation {
         } else {
             System.out.println("No error shown for empty fields");
         }
-
     }
 }
