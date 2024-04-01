@@ -1,22 +1,22 @@
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.codeborne.selenide.Configuration;
+import static com.codeborne.selenide.Selenide.*;
 
 public class Utils {
-    private static WebDriver driver;
+    private static boolean initialized = false;
 
-    public static WebDriver getWebDriver() {
-        if (driver == null) {
-            // Initialize WebDriver only if it's not already created
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
-            driver = new ChromeDriver();
+    public static void initializeSelenide() {
+        if (!initialized) {
+            Configuration.browser = "chrome";
+            initialized = true;
         }
-        return driver;
     }
 
-    public static void quitWebDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null; // Reset the WebDriver instance
-        }
+    public static void openBrowser(String url) {
+        initializeSelenide();
+        open(url);
+    }
+
+    public static void closeBrowser() {
+        closeWebDriver();
     }
 }
