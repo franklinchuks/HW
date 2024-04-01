@@ -1,64 +1,41 @@
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.*;
 
 public class CalculationAccuracy {
-    private WebDriver driver;
-    private WebElement invoiceAmountField;
-    private WebElement interestRateField;
-    private WebElement commissionFeeField;
-    private Select advanceRateSelect;
-    private Select paymentTermSelect;
 
     @BeforeClass
     public void setUp() {
-        driver = Utils.getWebDriver();
-        driver.get("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
-
-        invoiceAmountField = driver.findElement(By.name("calc_d5"));
-        interestRateField = driver.findElement(By.name("calc_d7"));
-        commissionFeeField = driver.findElement(By.name("calc_d9"));
-        WebElement advanceRateDropdown = driver.findElement(By.name("calc_d6"));
-        WebElement paymentTermDropdown = driver.findElement(By.name("calc_d8"));
-
-        invoiceAmountField.clear();
-        interestRateField.clear();
-        commissionFeeField.clear();
-        advanceRateSelect = new Select(advanceRateDropdown);
-        paymentTermSelect = new Select(paymentTermDropdown);
+        Utils.openBrowser("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
+        $("button.ui-cookie-consent__accept-button").click();
     }
 
     @Test(priority=6)
-    public void calculationAccuracyTest() throws InterruptedException {
-        invoiceAmountField.sendKeys("700");
-        interestRateField.sendKeys("4");
-        commissionFeeField.sendKeys("0.3");
-        advanceRateSelect.selectByValue("85");
-        paymentTermSelect.selectByValue("30");
+    public void calculationAccuracyTest() {
+        $("#D5").setValue("1700");
+        $("#D7").setValue("2");
+        $("#D9").setValue("0.3");
+        $("#D6").selectOptionByValue("85");
+        $("#D8").selectOptionByValue("30");
 
-        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
-        Thread.sleep(5000);
+        $("button.button.-guiding").click();
+        sleep(5000);
 
-        WebElement percentOfInvoiceOutputField = driver.findElement(By.id("result_perc"));
-        String percentOfInvoiceOutputText = percentOfInvoiceOutputField.getText();
-        System.out.println("Percent Of Invoice Output value: " + percentOfInvoiceOutputText);
-        String expectedPercentOfInvoiceOutputText = "0.58";
-        if (percentOfInvoiceOutputText.equals(expectedPercentOfInvoiceOutputText))
-        {
+        try {
+            $("#result_perc").shouldHave(text("0.58"));
             System.out.println("*** Percent Of Invoice Test Is Correct! ***");
-        } else {
-            System.out.println("### Percent Of Invoice Test Is Incorrect! ###");
+        } catch (Throwable e) {
+            System.out.println("### Percent Of Invoice Test Failed! ###");
+            e.printStackTrace();
         }
 
-        WebElement financingOfInvoiceOutputField = driver.findElement(By.id("result"));
-        String financingOfInvoiceOutputText = financingOfInvoiceOutputField.getText();
-        System.out.println("Financing Of Invoice Output value: " + financingOfInvoiceOutputText);
-        String expectedFinancingOfInvoiceOutputText = "4.08";
-        if (financingOfInvoiceOutputText.equals(expectedFinancingOfInvoiceOutputText)) {
+        try {
+            $("#result").shouldHave(text("4.08"));
             System.out.println("*** Financing Of Invoice Test Is Correct! ***");
-        } else {
-            System.out.println("### Financing Of Invoice Test Is Incorrect! ###");
+        } catch (Throwable e) {
+            System.out.println("### Financing Of Invoice Test Failed! ###");
+            e.printStackTrace();
         }
     }
-
 }
