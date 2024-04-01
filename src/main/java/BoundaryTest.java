@@ -33,7 +33,7 @@ public class BoundaryTest {
         interestRateField.clear();
         commissionFeeField.clear();
 
-        invoiceAmountField.sendKeys("1");
+        invoiceAmountField.sendKeys("0.1");
         interestRateField.sendKeys("0");
         commissionFeeField.sendKeys("0");
         advanceRateSelect.selectByValue("75");

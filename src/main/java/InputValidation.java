@@ -27,20 +27,41 @@ public class InputValidation {
         paymentTermSelect = new Select(paymentTermDropdown);
     }
 
-    @Test(priority=1)
+
+    @Test(priority=2)
     public void firstInputValidationTest() throws InterruptedException {
         invoiceAmountField.clear();
         interestRateField.clear();
         commissionFeeField.clear();
-        invoiceAmountField.sendKeys("7");
-        interestRateField.sendKeys("4");
-        commissionFeeField.sendKeys("0.5");
-        advanceRateSelect.selectByValue("85");
-        paymentTermSelect.selectByValue("120");
-        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
-        Thread.sleep(5000);
 
+        invoiceAmountField.sendKeys("a");
+        interestRateField.clear();
+        WebElement errorMessage1 = driver.findElement(By.id("D5"));
+        if (errorMessage1.isDisplayed()) {
+            System.out.println("Error message was thrown for non-numeric entries");
+        } else {
+            System.out.println("No message was thrown for non-numeric entries");
+        }
+
+        interestRateField.sendKeys("a");
+        commissionFeeField.clear();
+        WebElement errorMessage2 = driver.findElement(By.id("D7"));
+        if (errorMessage2.isDisplayed()) {
+            System.out.println("Error message was thrown for non-numeric entries");
+        } else {
+            System.out.println("No message was thrown for non-numeric entries");
+        }
+
+        commissionFeeField.sendKeys("a");
+        invoiceAmountField.clear();
+        WebElement errorMessage3 = driver.findElement(By.id("D8"));
+        if (errorMessage3.isDisplayed()) {
+            System.out.println("Error message was thrown for non-numeric entries");
+        } else {
+            System.out.println("No message was thrown for non-numeric entries");
+        }
     }
+
 
     @Test(priority=2)
     public void secondInputValidationTest() throws InterruptedException {
@@ -49,48 +70,30 @@ public class InputValidation {
         commissionFeeField.clear();
 
         invoiceAmountField.sendKeys("-1");
+        interestRateField.clear();
         WebElement errorMessage1 = driver.findElement(By.id("D5"));
         if (errorMessage1.isDisplayed()) {
-            String errorText = errorMessage1.getText();
-            System.out.println("Error Message: " + errorText);
+            System.out.println("Error message was thrown for negative entries");
         } else {
-            System.out.println("No Error Message");
+            System.out.println("No message was thrown for negative entries");
         }
 
         interestRateField.sendKeys("-1");
+        commissionFeeField.clear();
         WebElement errorMessage2 = driver.findElement(By.id("D7"));
         if (errorMessage2.isDisplayed()) {
-            String errorText = errorMessage2.getText();
-            System.out.println("Error Message: " + errorText);
+            System.out.println("Error message was thrown for negative entries");
         } else {
-            System.out.println("No Error Message");
+            System.out.println("No message was thrown for negative entries");
         }
 
         commissionFeeField.sendKeys("-1");
+        invoiceAmountField.clear();
         WebElement errorMessage3 = driver.findElement(By.id("D8"));
         if (errorMessage3.isDisplayed()) {
-            String errorText = errorMessage3.getText();
-            System.out.println("Error Message: " + errorText);
+            System.out.println("Error message was thrown for negative entries");
         } else {
-            System.out.println("No Error Message");
-        }
-
-        advanceRateSelect.selectByValue("-1");
-        WebElement errorMessage4 = driver.findElement(By.id("D6"));
-        if (errorMessage4.isDisplayed()) {
-            String errorText = errorMessage4.getText();
-            System.out.println("Error Message: " + errorText);
-        } else {
-            System.out.println("No Error Message");
-        }
-
-        paymentTermSelect.selectByValue("-1");
-        WebElement errorMessage5 = driver.findElement(By.id("D9"));
-        if (errorMessage5.isDisplayed()) {
-            String errorText = errorMessage5.getText();
-            System.out.println("Error Message: " + errorText);
-        } else {
-            System.out.println("No Error Message");
+            System.out.println("No message was thrown for negative entries");
         }
     }
 
@@ -100,13 +103,33 @@ public class InputValidation {
         invoiceAmountField.clear();
         interestRateField.clear();
         commissionFeeField.clear();
-        invoiceAmountField.sendKeys("3");
-        interestRateField.sendKeys("2");
-        commissionFeeField.sendKeys("0.1");
-        advanceRateSelect.selectByValue("75");
-        paymentTermSelect.selectByValue("30");
-        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
-        Thread.sleep(5000);
+
+        invoiceAmountField.clear();
+        interestRateField.clear();
+        WebElement errorMessage1 = driver.findElement(By.id("D5"));
+        if (errorMessage1.isDisplayed()) {
+            System.out.println("Error message was thrown for empty entries");
+        } else {
+            System.out.println("No message was thrown");
+        }
+
+        interestRateField.clear();
+        commissionFeeField.clear();
+        WebElement errorMessage2 = driver.findElement(By.id("D7"));
+        if (errorMessage2.isDisplayed()) {
+            System.out.println("Error message was thrown for empty entries");
+        } else {
+            System.out.println("No message was thrown for empty entries");
+        }
+
+        commissionFeeField.clear();
+        invoiceAmountField.clear();
+        WebElement errorMessage3 = driver.findElement(By.id("D8"));
+        if (errorMessage3.isDisplayed()) {
+            System.out.println("Error message was thrown for empty entries");
+        } else {
+            System.out.println("No message was thrown for empty entries");
+        }
 
     }
 
