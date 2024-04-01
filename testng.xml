@@ -3,10 +3,9 @@
 <suite name="All Test Suite">
     <test name="First Test">
         <classes>
-            <class name="BoundaryTest">
+            <class name="CalculationAccuracy">
                 <methods>
-                    <include name="minBoundaryTest"/>
-                    <include name="maxBoundaryTest"/>
+                    <include name="calculationAccuracyTest"/>
                 </methods>
             </class>
         </classes>

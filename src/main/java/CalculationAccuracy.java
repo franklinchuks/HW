@@ -40,6 +40,27 @@ public class CalculationAccuracy {
 
         driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
         Thread.sleep(5000);
+
+        WebElement percentOfInvoiceOutputField = driver.findElement(By.id("result_perc"));
+        String percentOfInvoiceOutputText = percentOfInvoiceOutputField.getText();
+        System.out.println("Percent Of Invoice Output value: " + percentOfInvoiceOutputText);
+        String expectedPercentOfInvoiceOutputText = "0.58";
+        if (percentOfInvoiceOutputText.equals(expectedPercentOfInvoiceOutputText))
+        {
+            System.out.println("*** Percent Of Invoice Test Is Correct! ***");
+        } else {
+            System.out.println("### Percent Of Invoice Test Is Incorrect! ###");
+        }
+
+        WebElement financingOfInvoiceOutputField = driver.findElement(By.id("result"));
+        String financingOfInvoiceOutputText = financingOfInvoiceOutputField.getText();
+        System.out.println("Financing Of Invoice Output value: " + financingOfInvoiceOutputText);
+        String expectedFinancingOfInvoiceOutputText = "4.08";
+        if (financingOfInvoiceOutputText.equals(expectedFinancingOfInvoiceOutputText)) {
+            System.out.println("*** Financing Of Invoice Test Is Correct! ***");
+        } else {
+            System.out.println("### Financing Of Invoice Test Is Incorrect! ###");
+        }
     }
 
     @AfterClass
