@@ -1,64 +1,42 @@
-import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Condition.*;
 
 public class BoundaryTest {
-    private WebDriver driver;
-    private WebElement invoiceAmountField;
-    private WebElement interestRateField;
-    private WebElement commissionFeeField;
-    private Select advanceRateSelect;
-    private Select paymentTermSelect;
 
     @BeforeClass
     public void setUp() {
-        driver = Utils.getWebDriver();
-        driver.get("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
-
-        invoiceAmountField = driver.findElement(By.name("calc_d5"));
-        interestRateField = driver.findElement(By.name("calc_d7"));
-        commissionFeeField = driver.findElement(By.name("calc_d9"));
-        WebElement advanceRateDropdown = driver.findElement(By.name("calc_d6"));
-        WebElement paymentTermDropdown = driver.findElement(By.name("calc_d8"));
-
-        advanceRateSelect = new Select(advanceRateDropdown);
-        paymentTermSelect = new Select(paymentTermDropdown);
+        Utils.openBrowser("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
     }
 
     @Test(priority=7)
-    public void minBoundaryTest() throws InterruptedException {
-        invoiceAmountField.clear();
-        interestRateField.clear();
-        commissionFeeField.clear();
+    public void minBoundaryTest() {
+        $("#D5").setValue("0.1");
+        $("#D7").setValue("0");
+        $("#D9").setValue("0");
+        $("#D6").selectOptionByValue("75");
+        $("#D8").selectOptionByValue("30");
 
-        invoiceAmountField.sendKeys("0.1");
-        interestRateField.sendKeys("0");
-        commissionFeeField.sendKeys("0");
-        advanceRateSelect.selectByValue("75");
-        paymentTermSelect.selectByValue("30");
-
-        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
-        Thread.sleep(5000);
+        $("button.button.-guiding").click();
+        sleep(3000);
     }
 
     @Test(priority=8)
-    public void maxBoundaryTest() throws InterruptedException {
-        invoiceAmountField.clear();
-        interestRateField.clear();
-        commissionFeeField.clear();
+    public void maxBoundaryTest() {
+        $("#D5").setValue("100000000");
+        $("#D7").setValue("20");
+        $("#D9").setValue("100");
+        $("#D6").selectOptionByValue("90");
+        $("#D8").selectOptionByValue("120");
 
-        invoiceAmountField.sendKeys("100000000");
-        interestRateField.sendKeys("20");
-        commissionFeeField.sendKeys("100");
-        advanceRateSelect.selectByValue("90");
-        paymentTermSelect.selectByValue("120");
-
-        driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
-        Thread.sleep(5000);
+        $("button.button.-guiding").click();
+        sleep(3000);
     }
 
     @AfterClass
     public void tearDown() {
-        driver.quit();
+        closeWebDriver();
     }
 }

@@ -8,7 +8,6 @@ public class CalculationAccuracy {
     @BeforeClass
     public void setUp() {
         Utils.openBrowser("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
-        $("button.ui-cookie-consent__accept-button").click();
     }
 
     @Test(priority=6)
