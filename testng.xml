@@ -3,21 +3,42 @@
 <suite name="All Test Suite">
     <test name="First Test">
         <classes>
+            <class name="BasicFunctionality">
+                <methods>
+                    <include name="basicFunctionalityTest"/>
+<!--                    <include name="buttonFunctionalityTest"/>-->
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Second Test">
+        <classes>
             <class name="InputValidation">
                 <methods>
+                    <include name="firstInputValidationTest"/>
+                    <include name="secondInputValidationTest"/>
                     <include name="thirdInputValidationTest"/>
                 </methods>
             </class>
         </classes>
     </test>
-<!--    <test name="Second Test">-->
-<!--        <classes>-->
-<!--            <class name="Utils">-->
-<!--                <methods>-->
-<!--                    <include name="openBrowser"/>-->
-<!--                    <include name="browserInputs"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
-<!--    </test>-->
+    <test name="Third Test Calculation">
+        <classes>
+            <class name="CalculationAccuracy">
+                <methods>
+                    <include name="calculationAccuracyTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Fourth Test Boundary">
+        <classes>
+            <class name="BoundaryTest">
+                <methods>
+                    <include name="minBoundaryTest"/>
+                    <include name="maxBoundaryTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
 </suite>
