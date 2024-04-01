@@ -5,7 +5,7 @@
         <classes>
             <class name="InputValidation">
                 <methods>
-                    <include name="inputValidation"/>
+                    <include name="secondInputValidationTest"/>
                 </methods>
             </class>
         </classes>
