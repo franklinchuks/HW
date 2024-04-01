@@ -32,15 +32,21 @@ public class InputValidation {
         invoiceAmountField.clear();
         interestRateField.clear();
         commissionFeeField.clear();
-
         invoiceAmountField.sendKeys("7");
         interestRateField.sendKeys("4");
         commissionFeeField.sendKeys("0.5");
         advanceRateSelect.selectByValue("85");
         paymentTermSelect.selectByValue("120");
-
         driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
         Thread.sleep(5000);
+
+        WebElement errorMessage = driver.findElement(By.id("errorMessage"));
+        if (errorMessage) {
+            String errorText = errorMessage.getText();
+            System.out.println("Error Message: " + errorText);
+        } else {
+            System.out.println("No Error Message");
+        }
     }
 
     @Test(priority=2)
@@ -48,15 +54,21 @@ public class InputValidation {
         invoiceAmountField.clear();
         interestRateField.clear();
         commissionFeeField.clear();
-
         invoiceAmountField.sendKeys("5");
         interestRateField.sendKeys("2");
         commissionFeeField.sendKeys("0.5");
         advanceRateSelect.selectByValue("90");
         paymentTermSelect.selectByValue("60");
-
         driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
         Thread.sleep(5000);
+
+        WebElement errorMessage = driver.findElement(By.id("errorMessage"));
+        if (errorMessage) {
+            String errorText = errorMessage.getText();
+            System.out.println("Error Message: " + errorText);
+        } else {
+            System.out.println("No Error Message");
+        }
     }
 
     @Test(priority=3)
@@ -64,15 +76,21 @@ public class InputValidation {
         invoiceAmountField.clear();
         interestRateField.clear();
         commissionFeeField.clear();
-
         invoiceAmountField.sendKeys("3");
         interestRateField.sendKeys("2");
         commissionFeeField.sendKeys("0.1");
         advanceRateSelect.selectByValue("75");
         paymentTermSelect.selectByValue("30");
-
         driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
         Thread.sleep(5000);
+
+        WebElement errorMessage = driver.findElement(By.id("errorMessage"));
+        if (errorMessage) {
+            String errorText = errorMessage.getText();
+            System.out.println("Error Message: " + errorText);
+        } else {
+            System.out.println("No Error Message");
+        }
     }
 
     @AfterClass
