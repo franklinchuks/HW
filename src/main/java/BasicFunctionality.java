@@ -5,12 +5,14 @@ import static com.codeborne.selenide.Condition.*;
 
 public class BasicFunctionality {
 
+    //        calling utility class
     @BeforeClass
     public void setUp() {
         Utils.openBrowser("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
         $("button.ui-cookie-consent__accept-button").click();
     }
 
+//    testing if page loads correctly
     @Test(priority = 1)
     public void basicFunctionalityTest() {
         String actualTitle = title();
@@ -22,6 +24,7 @@ public class BasicFunctionality {
         }
     }
 
+//    testing if calculate button works
     @Test(priority = 2)
     public void buttonFunctionalityTest() throws InterruptedException {
         $("button.-guiding").click();

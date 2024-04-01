@@ -5,11 +5,13 @@ import static com.codeborne.selenide.Condition.*;
 
 public class CalculationAccuracy {
 
+    //        calling utility class
     @BeforeClass
     public void setUp() {
         Utils.openBrowser("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
     }
 
+//    testing if the factoring calculator is accurate
     @Test(priority=6)
     public void calculationAccuracyTest() {
         $("#D5").setValue("1700");
