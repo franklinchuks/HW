@@ -11,7 +11,7 @@ public class InputValidation {
     }
 
     @Test
-    public void inputValidation() {
+    public void inputValidation() throws InterruptedException {
         driver.get("https://www.swedbank.lt/business/finance/trade/factoring?language=ENG");
         WebElement cookieAcceptButton = driver.findElement(By.xpath("//button[contains(@class, 'button ui-cookie-consent__accept-button')]"));
         cookieAcceptButton.click();
@@ -26,22 +26,22 @@ public class InputValidation {
         interestRateField.clear();
         commissionFeeField.clear();
 
-        invoiceAmountField.sendKeys("-7");
-        interestRateField.sendKeys("-4");
-        commissionFeeField.sendKeys("-0.5");
+        invoiceAmountField.sendKeys("7");
+        interestRateField.sendKeys("4");
+        commissionFeeField.sendKeys("0.5");
 
         Select advanceRateSelect = new Select(advanceRateDropdown);
-        advanceRateSelect.selectByValue("-85");
+        advanceRateSelect.selectByValue("85");
 
         Select paymentTermSelect = new Select(paymentTermDropdown);
-        paymentTermSelect.selectByValue("-120");
+        paymentTermSelect.selectByValue("120");
 
         Thread.sleep(3000);
 
 //        click calculate button
         driver.findElement(By.xpath("//button[contains(@class, 'button -guiding')]")).click();
 
-        Thread.sleep(3000);
+        Thread.sleep(5000);
     }
 
     @AfterClass
