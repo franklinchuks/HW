@@ -48,6 +48,15 @@ public class InputValidation {
         paymentTermSelect.selectByValue("60");
     }
 
+    @Test
+    public void thirdInputValidationTest() throws InterruptedException {
+        invoiceAmountField.sendKeys("3");
+        interestRateField.sendKeys("2");
+        commissionFeeField.sendKeys("0.1");
+        advanceRateSelect.selectByValue("75");
+        paymentTermSelect.selectByValue("30");
+    }
+
     @AfterClass
     public void tearDown() {
         try {
